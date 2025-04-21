@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
     double price = pizzas[currentPizza];
 
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
+      splashFactory: NoSplash.splashFactory,
       onTap: () {
         if (cart.contains(currentPizza)) {
           // Remove
@@ -89,6 +89,7 @@ class HomePage extends StatelessWidget {
         cartCubit.addToCart(currentPizza);
       },
       child: Card(
+        elevation: !cart.contains(currentPizza) ? 5 : 1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
