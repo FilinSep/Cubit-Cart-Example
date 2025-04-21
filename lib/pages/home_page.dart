@@ -76,45 +76,52 @@ class HomePage extends StatelessWidget {
     String currentPizza = pizzas.keys.toList()[index];
     double price = pizzas[currentPizza];
 
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Text(
-              currentPizza,
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
-            ),
-            Expanded(child: Icon(Icons.local_pizza, size: 80)),
-            Divider(endIndent: 10, indent: 10),
-            Padding(
-              padding: const EdgeInsets.all(2.0),
-              child:
-                  !cart.contains(currentPizza)
-                      ? // Add to cart
-                      InkWell(
-                        onTap: () => cartCubit.addToCart(currentPizza),
-                        child: Text(
+    return InkWell(
+      borderRadius: BorderRadius.circular(16),
+      onTap: () {
+        if (cart.contains(currentPizza)) {
+          // Remove
+          cartCubit.removeFromCart(currentPizza);
+          return;
+        }
+
+        // Add
+        cartCubit.addToCart(currentPizza);
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(
+                currentPizza,
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              ),
+              Expanded(child: Icon(Icons.local_pizza, size: 80)),
+              Divider(endIndent: 10, indent: 10),
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child:
+                    !cart.contains(currentPizza)
+                        ? // Add to cart
+                        Text(
                           '\$${price.toStringAsFixed(2)}',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w500,
                           ),
-                        ),
-                      )
-                      : // Remove from cart
-                      InkWell(
-                        onTap: () => cartCubit.removeFromCart(currentPizza),
-                        child: Text(
+                        )
+                        : // Remove from cart
+                        Text(
                           'Remove',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                      ),
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

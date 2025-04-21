@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Cubit Cart Example',
       theme: ThemeData.light(),
       home: BlocProvider(
         create: (context) => CartCubit()..getPizzas(),

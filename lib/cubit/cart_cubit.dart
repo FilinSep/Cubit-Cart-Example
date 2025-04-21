@@ -23,6 +23,7 @@ class CartCubit extends Cubit<CartState> {
         'Greek': 12.99,
         'Chicago': 12.99,
         'Calzone': 12.99,
+        'Detroit': 12.99,
       }, []),
     );
   }
