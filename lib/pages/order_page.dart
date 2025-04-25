@@ -86,7 +86,6 @@ class OrderPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Spacer(),
                         SizedBox(
                           width: 250,
                           height: 60,

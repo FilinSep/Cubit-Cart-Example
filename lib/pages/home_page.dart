@@ -89,6 +89,8 @@ class HomePage extends StatelessWidget {
         cartCubit.addToCart(currentPizza);
       },
       child: Card(
+        color: cart.contains(currentPizza) ? Colors.white70 : Colors.white,
+
         elevation: !cart.contains(currentPizza) ? 5 : 1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
